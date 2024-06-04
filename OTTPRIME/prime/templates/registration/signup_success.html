@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Registration Successful{% endblock %}
+
+{% block style %}
+{% load static %}
+<style>
+     body {
+            background-image: url('{% static "images/bg.jpg" %}');
+            /* background-size: cover; */
+            /* background-repeat: no-repeat; */
+            background-attachment: fixed;
+            color: white;
+        }
+    .success-card {
+        max-width: 500px;
+        margin: auto;
+        margin-top: 50px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #f8f9fa;
+    }
+    .success-card h3 {
+        margin-bottom: 20px;
+    }
+    .success-card .btn {
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="card success-card">
+        <div class="card-body text-center">
+            <h3>Registration Done Successfully!!</h3>
+            <br>
+            <a href="{% url 'userlogin' %}">
+                <button type="button" class="btn btn-dark">Click to Login</button>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

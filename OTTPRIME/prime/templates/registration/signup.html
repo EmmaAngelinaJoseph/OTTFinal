@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}signup{% endblock %}
+{% block style %}
+{% load static %}
+<style>
+     body {
+            background-image: url('{% static "images/bg.jpg" %}');
+            /* background-size: cover; */
+            /* background-repeat: no-repeat; */
+            background-attachment: fixed;
+            color: white;
+        }
+    .form-container {
+        max-width: 400px;
+        margin-bottom: 50px;
+        margin-left: 350px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: rgba(0, 0, 0, 0.7); /* semi-transparent background */
+        color: white;
+    }
+    .form-container h3 {
+        margin-bottom: 20px;
+    }
+    .form-container .form-group {
+        margin-bottom: 15px;
+    }
+    .custom-button {
+        background-color: #3AAFA9;
+        border-color: #3AAFA9;
+    }
+</style>
+{% endblock %}
+<body>
+{% block body %}
+<div class="container mt-5">
+    <div class="form-container">
+        <h3 class="text-center">Please Register</h3>
+        <form action="" method="post" novalidate>
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% for error in field.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-dark custom-button">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+</body>

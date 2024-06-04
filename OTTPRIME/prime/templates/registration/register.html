@@ -1,0 +1,43 @@
+{% extends 'adminbase.html' %}
+{% block title %}Prime - Register{% endblock %}
+{% block style %}
+<style>
+    .form-container {
+        max-width: 400px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+    .form-container h3 {
+        margin-bottom: 20px;
+    }
+    .form-container .form-group {
+        margin-bottom: 15px;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div class="container mt-5">
+    <div class="form-container">
+        <h3 class="text-center">Please Register</h3>
+        <form action="" method="post" novalidate>
+            {% csrf_token %}
+            {% for field in user_reg_form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% for error in field.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-dark">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

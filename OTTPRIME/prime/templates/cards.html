@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% block title %}cards{% endblock %}
+{% block style %}
+{% load static %}
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+
+body {
+            background-image: url('{% static "images/bg.jpg" %}');
+            /* background-size: cover; */
+            /* background-repeat: no-repeat; */
+            background-attachment: fixed;
+            color: white;
+        }
+        .plan-header {
+            color:white;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+        .plan-card {
+            margin-bottom: 50px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            background-color:#17252A
+        }
+        .plan-card:hover {
+            transform: scale(1.05);
+        }
+        .plan-card img {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .plan-card .card-body {
+            padding: 30px;
+            text-align: center;
+            color:white
+        }
+        .plan-card .card-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color:white
+        }
+        .plan-card .card-text {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color:white
+        }
+        .plan-card .btn {
+            background-color: #3AAFA9;
+            border-color: #3AAFA9;
+        }
+        .plan-card .btn:hover {
+            background-color: #369a93;
+            border-color: #369a93;
+        }
+    </style>
+{% endblock %}
+<body>
+{% block body %}
+
+<div class="container">
+        <h1 class="plan-header">Choose Your Plan</h1>
+        <div class="row">
+            <!-- Plan Card 1 -->
+            <div class="col-md-4">
+                <div class="card plan-card">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Basic Plan</h5>
+                        <p class="card-text">Enjoy our basic plan with access to limited movies and TV shows.</p>
+                        <ul class="list-unstyled">
+                            <li>SD Quality</li>
+                            <li>Watch on 1 Screen</li>
+                            <li>Unlimited Movies</li>
+                            <li>Rs.250/month</li>
+                        </ul>
+<!--                        <a href="{% url 'select_plan' 'Basic' %}" class="btn btn-primary">Select Plan</a>-->
+                        <a href="{% if request.session.user_name %}{% url 'select_plan' 'Basic' %}{% else %}{% url 'userlogin' %}{% endif %}" class="btn btn-primary">Select Plan</a>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Plan Card 2 -->
+            <div class="col-md-4">
+                <div class="card plan-card">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Standard Plan</h5>
+                        <p class="card-text">Get access to more movies and TV shows with our standard plan.</p>
+                        <ul class="list-unstyled">
+                            <li>HD Quality</li>
+                            <li>Watch on 2 Screens</li>
+                            <li>Unlimited Movies</li>
+                            <li>TV Shows Included</li>
+                            <li>Rs.500/month</li>
+                        </ul>
+                        <a href="{% if request.session.user_name %}{% url 'select_plan' 'Standard' %}{% else %}{% url 'userlogin' %}{% endif %}" class="btn btn-primary">Select Plan</a>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Plan Card 3 -->
+            <div class="col-md-4">
+                <div class="card plan-card">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Premium Plan</h5>
+                        <p class="card-text">Enjoy all our content with unlimited access and premium features.</p>
+                        <ul class="list-unstyled">
+                            <li>Ultra HD Quality</li>
+                            <li>Watch on 4 Screens</li>
+                            <li>Unlimited Movies</li>
+                            <li>Exclusive Content</li>
+                            <li>Rs.1000/month</li>
+                        </ul>
+                        <a href="{% if request.session.user_name %}{% url 'select_plan' 'Premium' %}{% else %}{% url 'userlogin' %}{% endif %}" class="btn btn-primary">Select Plan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+{% endblock %}
+</body>

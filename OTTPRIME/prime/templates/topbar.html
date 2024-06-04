@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTT Platform</title>
+    <style>
+       body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .topbar {
+            background-color: #232F3E;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
+        .logo a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navigation ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navigation li {
+            margin: 0 10px;
+            position: relative;
+        }
+
+        .navigation a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .nav-dropdown .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #232F3E;
+            padding: 10px 0;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .nav-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .nav-dropdown .dropdown-item {
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .nav-dropdown .dropdown-item:hover {
+            background-color: #3AAFA9;
+        }
+
+        .search-bar form {
+            display: flex;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+            border: none;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .search-bar button {
+            padding: 6px 10px;
+            border: none;
+            background-color: #FF9900;
+            color: white;
+            border-radius: 0 3px 3px 0;
+            cursor: pointer;
+        }
+
+        .user-account a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        .user-account a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            margin: 0;
+            padding: 0;
+        }
+        .trending {
+            margin-top: 0; /* Remove any top margin */
+            padding-top: 0; /* Remove any top padding */
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <div class="logo">
+            <a href="">PRIME</a>
+        </div>
+        <nav class="navigation">
+            <ul>
+                <li class="nav-dropdown">
+                    <a class="btn dropdown-toggle" href="#" id="homeDropdown" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+                    <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                        <li><a class="dropdown-item" href="{% url 'base' %}">All</a></li>
+                        <li><a class="dropdown-item" href="{% url 'movies' %}">Movies</a></li>
+                        <!-- <li><a class="dropdown-item" href="">TV Shows</a></li> -->
+                    </ul>
+                </li>
+                <li class="nav-dropdown">
+                    <a class="btn dropdown-toggle" href="#" id="categoriesDropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories</a>
+                    <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">
+                        <li><a class="dropdown-item" href="{% url 'genre_movies' genre='Action' %}">Action</a></li>
+                        <li><a class="dropdown-item" href="{% url 'genre_movies' genre='Animation' %}">Animation</a></li>
+                        <li><a class="dropdown-item" href="{% url 'genre_movies' genre='Comedy' %}">Comedy</a></li>
+                        <li><a class="dropdown-item" href="{% url 'genre_movies' genre='Romance' %}">Romance</a></li>
+                        <li><a class="dropdown-item" href="{% url 'genre_movies' genre='Thriller' %}">Thriller</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <form action="{% url 'search_movies' %}" method="get">
+                <input type="text" name="query" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div class="user-account">
+            {% if request.session.user_name %}
+                <a href="#">Welcome {{ request.session.user_name }}</a>
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'userlogin' %}">Login/Sign Up</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

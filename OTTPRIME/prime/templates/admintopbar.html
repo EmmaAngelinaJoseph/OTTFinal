@@ -1,0 +1,47 @@
+<html>
+<head>
+
+<body>
+<nav class="navbar navbar-expand-lg" style="background-color: #17252A; border-bottom: 2px ; box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2); position: fixed; left: 0; top: 0; width: 100%; z-index: 1000;">
+  <div class="container-fluid">
+    {% load static %}
+<!--    <img src="{% static 'images/images.png'%}" alt=""-->
+<!--        width="50" height="50"-->
+<!--        class="d-inline-block align-text-top"-->
+<!--    style="border-radius: 50%;"/>-->
+    <a class="navbar-brand" href="#" style="padding-left:10px;back;color:#FEFFFF">    PRIME</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto" >
+
+          {% if request.user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color:#FEFFFF">Welcome {{request.user.username}}</a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'adminindex' %}" style="color:#FEFFFF" >Home</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="{% url 'logoutadmin' %}"  style="color:#FEFFFF">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item dropdown">
+    <a class="btn dropdown-toggle" data-bs-toggle="dropdown" style="padding-right:150px;width:50px;border:none;color:#FEFFFF">
+        My Account
+    </a>
+    <ul class="dropdown-menu narrow-dropdown-menu"  >
+        <li><a class="dropdown-item" href="{% url 'adminlogin' %}">Login</a></li>
+        <li><a class="dropdown-item" href="{% url 'register' %}">Sign up</a></li>
+    </ul>
+</li>
+      </ul>
+{% endif %}
+    </div>
+  </div>
+
+</nav>
+</body>
+</head>
+</html>

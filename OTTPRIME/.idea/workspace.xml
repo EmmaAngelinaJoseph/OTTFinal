@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ce9254be-73ab-4612-8cd4-1a752bd432c4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/prime/authentication.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prime/middleware.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prime/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prime/templates/cards.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prime/templates/footer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prime/templates/movies.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prime/templates/payment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prime/templates/payment_success.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prime/templates/registration/logged_out.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prime/templates/registration/signup.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prime/templates/registration/signup_success.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prime/templates/registration/userlogin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prime/templates/topbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OTTPRIME/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/OTTPRIME/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prime/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/prime/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prime/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/prime/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prime/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/prime/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prime/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/prime/views.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2hEp6CeV5lZnYapVMLOpW9bs1rt" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/ancyr/OneDrive/Desktop/OTT/OTTPRIME"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ce9254be-73ab-4612-8cd4-1a752bd432c4" name="Changes" comment="" />
+      <created>1717168914029</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1717168914029</updated>
+    </task>
+    <servers />
+  </component>
+</project>

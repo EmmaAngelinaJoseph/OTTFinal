@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% block title %}Payment{% endblock %}
+{% block style %}
+    {% load static %}
+    <style>
+        body {
+            background-image: url('{% static "images/bg.jpg" %}');
+            /* background-size: cover; */
+            /* background-repeat: no-repeat; */
+            background-attachment: fixed;
+            color: white;
+        }
+        .payment-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .payment-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            color: white;
+        }
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .btn-primary {
+            background-color: #3AAFA9;
+            border-color: #3AAFA9;
+        }
+        .btn-primary:hover {
+            background-color: #369a93;
+            border-color: #369a93;
+        }
+        .btn-home {
+            background-color: #17252A;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-home:hover {
+            background-color: #0d353a;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="container payment-container">
+    <h2>Payment Details for {{ plan }}</h2>
+    <form id="paymentForm" method="post" action="#">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="cardNumber">Card Number</label>
+            <input type="number" class="form-control" id="cardNumber" name="card_number" required>
+        </div>
+        <div class="form-group">
+            <label for="expiryDate">Expiry Date</label>
+            <input type="text" class="form-control" id="expiryDate" name="expiry_date" placeholder="MM/YY" required>
+        </div>
+        <div class="form-group">
+            <label for="cvv">CVV</label>
+            <input type="number" class="form-control" id="cvv" name="cvv" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit Payment</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    document.getElementById('paymentForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const expiryDate = document.getElementById('expiryDate').value;
+        const cvv = document.getElementById('cvv').value;
+        const [month, year] = expiryDate.split('/').map(x => parseInt(x, 10));
+
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth() + 1; // getMonth() is zero-based
+        const currentYear = currentDate.getFullYear() % 100; // get last two digits of year
+
+        // Validate CVV is exactly 3 digits
+        if (cvv.length !== 3 || !/^\d{3}$/.test(cvv)) {
+            Swal.fire({
+                title: 'Invalid CVV',
+                text: 'The CVV should be exactly 3 digits.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            return;
+        }
+
+        // Validate expiry date is in the future
+        if (year > currentYear || (year === currentYear && month > currentMonth)) {
+            Swal.fire({
+                title: 'Payment Successful!',
+                text: 'Your payment has been processed successfully.',
+                icon: 'success',
+                showCancelButton: true,
+                confirmButtonText: 'Go to Home',
+                cancelButtonText: 'Stay Here'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "{% url 'base' %}";
+                }
+            });
+        } else {
+            Swal.fire({
+                title: 'Invalid Expiry Date',
+                text: 'Please enter a valid future expiry date.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
+    });
+</script>
+{% endblock %}
